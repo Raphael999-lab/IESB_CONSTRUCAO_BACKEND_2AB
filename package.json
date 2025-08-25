@@ -1,0 +1,23 @@
+{
+  "name": "iesb_construcao_backend_2ab",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Raphael999-lab/IESB_CONSTRUCAO_BACKEND_2AB.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Raphael999-lab/IESB_CONSTRUCAO_BACKEND_2AB/issues"
+  },
+  "homepage": "https://github.com/Raphael999-lab/IESB_CONSTRUCAO_BACKEND_2AB#readme",
+  "description": "",
+  "dependencies": {
+    "prompt-sync": "^4.2.0"
+  }
+}
