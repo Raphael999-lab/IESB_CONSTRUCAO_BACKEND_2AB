@@ -1,0 +1,19 @@
+- cadastro de Aluno
+
+# Operações 
+
+criar 
+POST /alunos
+
+Listar Todos 
+GET /alunos
+
+Buscar um 
+GET /alunos/{id}
+
+Editar 
+Put /alunos/{id}
+
+Deletar
+DELETE /alunos/{id}
+exclusão lógica

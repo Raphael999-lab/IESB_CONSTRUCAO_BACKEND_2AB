@@ -1,0 +1,23 @@
+//cadastro de Pessoas (CRUD)
+id 
+nome 
+CSSFontPaletteValuesRuleemail
+dataNascimento 
+
+# Operações 
+
+criar 
+POST /pessoas
+
+Listar Todos 
+GET /pessoas
+
+Buscar um 
+GET /pessoas/{id}
+
+Editar 
+Put /pessoas/{id}
+
+Deletar
+DELETE /pessoas/{id}
+exclusão lógica
