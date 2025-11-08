@@ -1,30 +1,43 @@
-require('dotenv').config();
 const express = require('express');
-const mongoose = require('mongoose');
-
-const departamentoRoutes = require('./controllers/DepartamentoController');
-const cargoRoutes = require('./controllers/CargoController');
-const funcionarioRoutes = require('./controllers/FuncionarioController');
-const projetoRoutes = require('./controllers/ProjetoController');
-const tarefaRoutes = require('./controllers/TarefaController');
-
 const app = express();
+
 app.use(express.json());
 
-const DB_URI = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}/${process.env.DB_NAME}?retryWrites=true&w=majority`;
+// Conexão com o banco
+const mongoose = require('mongoose');
+require('dotenv').config();
 
-mongoose.connect(DB_URI)
-  .then(() => console.log('MongoDB conectado'))
-  .catch(err => {
-    console.error('Erro ao conectar:', err);
-    process.exit(1);
+const DB_HOST = process.env.DB_HOST;
+const DB_USER = process.env.DB_USER;
+const DB_PASS = process.env.DB_PASS;
+const DB_NAME = process.env.DB_NAME;
+
+const url = `mongodb+srv://${DB_USER}:${DB_PASS}@${DB_HOST}/${DB_NAME}?retryWrites=true&w=majority&appName=Cluster0`;
+
+mongoose.connect(url)
+  .then(() => {
+    console.log("Conectado ao banco MongoDB!!!!");
+  })
+  .catch(erro => {
+    console.log("Erro ao conectar no banco MongoDB: ", erro);
   });
 
-app.use('/departamentos', departamentoRoutes);
-app.use('/cargos', cargoRoutes);
-app.use('/funcionarios', funcionarioRoutes);
-app.use('/projetos', projetoRoutes);
-app.use('/tarefas', tarefaRoutes);
+// Rotas
+const CargoController = require('./controllers/CargoController');
+app.use(CargoController);
 
-const PORT = 3000;
-app.listen(PORT, () => console.log(`Servidor rodando na porta ${PORT}`));
+const DepartamentoController = require('./controllers/DepartamentoController');
+app.use(DepartamentoController);
+
+const FuncionarioController = require('./controllers/FuncionarioController');
+app.use(FuncionarioController);
+
+const ProjetoController = require('./controllers/ProjetoController');
+app.use(ProjetoController);
+
+const TarefaController = require('./controllers/TarefaController');
+app.use(TarefaController);
+
+app.listen(3000, () => {
+  console.log("Aplicação rodando -> http://localhost:3000");
+});
